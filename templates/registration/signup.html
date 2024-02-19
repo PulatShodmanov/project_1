@@ -9,18 +9,10 @@
         <div class="p-4 p-sm-5 bg-primary bg-opacity-10 rounded">
 					<h2>Hisobingingizni yasab oling</h2>
 					<!-- Form START -->
-					<form class="mt-4">
-						<!-- Email -->
-						<div class="mb-3">
-							<label class="form-label" for="exampleInputEmail1">Email address</label>
-							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
-						</div>
-						<!-- Password -->
-						<div class="mb-3">
-							<label class="form-label" for="exampleInputPassword1">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="*********">
-						</div>
-						<!-- Checkbox -->
+					<form method="post"></form>
+					    {% csrf_token %}
+						{{ form }}
+
 						<div class="mb-3 form-check">
 							<input type="checkbox" class="form-check-input" id="exampleCheck1">
 							<label class="form-check-label" for="exampleCheck1">keep me signed in</label>
@@ -28,18 +20,12 @@
 						<!-- Button -->
 						<div class="row align-items-center">
 							<div class="col-sm-4">
-								<button type="submit" class="btn btn-success">Sign me in</button>
+								<button type="submit" class="btn btn-success">Jo'natish</button>
 							</div>
 							<div class="col-sm-8 text-sm-end">
-								<span>Akkauntingiz mavjudami? <a href="{% url 'user:sign_in' %}">
-                                    <u>
-                                        Kirish
-                                </u>
-                            </a>
-                        </span>
-					</div>
-				</div>
-					</form>
+								<span>Akaunt mavjudmi? <a href="{% url 'user:sign_in' %}"><u>Kirish</u></a></span>
+							</div>
+						</div>
 					<!-- Form END -->
 					<hr>
 					<!-- Social-media btn -->
