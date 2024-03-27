@@ -29,6 +29,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(
         default=uuid.uuid4, unique=True, editable=False, db_index=True, primary_key=True
     )
+    avatar = models.ImageField(upload_to='images/', blank=True)
+    avatar_user = models.ImageField(upload_to='imges/', blank=True)
+    job = models.CharField(max_length=50, blank=True)
+    bio = models.CharField(max_length=200, blank=True)
     full_name = models.CharField(
         max_length=255, default='', verbose_name="Ism familiya")
     phone = models.CharField(max_length=15, unique=True,
@@ -49,3 +53,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.phone
+    
+class Follow(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followers", blank=True, null=True)
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name="followings", blank=True, null=True)
+    
+    
+    class Meta:
+        unique_together = ('user', 'follower',)
+        

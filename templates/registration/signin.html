@@ -9,25 +9,13 @@
 					<h2>Hisobingizga kiring</h2>
 					<!-- Form START -->
 					<form method="post" class="mt-4">
-						<!-- Email -->
-						<div class="mb-3">
-							<label class="form-label" for="exampleInputEmail1">Email address</label>
-							<input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
-						</div>
-						<!-- Password -->
-						<div class="mb-3">
-							<label class="form-label" for="exampleInputPassword1">Password</label>
-							<input type="password" class="form-control" id="exampleInputPassword1" placeholder="*********">
-						</div>		
-						<!-- Checkbox -->
-						<div class="mb-3 form-check">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1">
-							<label class="form-check-label" for="exampleCheck1">keep me signed in</label>
-						</div>
-						<!-- Button -->
+
+						{% csrf_token %}
+						{{ form }}
+
 						<div class="row align-items-center">
 							<div class="col-sm-4">
-								<button type="submit" class="btn btn-success">Sign me in</button>
+								<button type="submit" class="btn btn-success">Jo'natish</button>
 							</div>
 							<div class="col-sm-8 text-sm-end">
 								<span>Akaunt mavjud emasmi? <a href="{% url 'user:sign_up' %}"><u>Ro'yxatdan o'tish</u></a></span>
