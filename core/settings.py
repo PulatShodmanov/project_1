@@ -38,7 +38,7 @@ LOCAL_APPS = [
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS  + LOCAL_APPS
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware'
+    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
