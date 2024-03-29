@@ -14,7 +14,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+WEB_URL = os.environ.get('WEB_URL')
 
 DJANGO_APPS = [
     'django.contrib.admin',
