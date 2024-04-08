@@ -38,7 +38,7 @@ DJANGO_APPS = [
 ]
 
 EXTERNAL_APPS = [
-
+    "storages",
 ]
 
 LOCAL_APPS = [
