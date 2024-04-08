@@ -157,9 +157,7 @@ def post_update(request, id):
         user = request.user
         if form.is_valid():
             post = form.save(commit=False)
-            # category_id = form.cleaned_data['category']
-            # category = Category.objects.get(pk=category_id)
-            # post.category = category
+            post.img = form.cleaned_data['image']
             post.author = user
             post.save()
             return redirect('user:dashboard', id=user.id)
