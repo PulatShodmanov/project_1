@@ -57,6 +57,7 @@ def dashboard(request, id):
 
     return render(request, 'dashboard.html', data)
 
+@check_is_superuser
 @login_required
 def profile(request, id):
     user = get_object_or_404(User, id=id)
