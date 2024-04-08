@@ -282,8 +282,8 @@ Header START -->
 					id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static"
 					data-bs-toggle="dropdown" aria-expanded="true">
 					{% if request.user.avatar %}
-					<img class="avatar-img rounded-circle shadow" src="{{ request.user.avatar.url }	}" alt="avatar">
-					{% else%}
+					<img class="avatar-img rounded-circle shadow" src="{{ request.user.avatar.url }}" alt="avatar">
+					{% else %}
 					<img class="avatar-img rounded-circle shadow" src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="avatar">
 					{% endif %}
 					</a>
@@ -296,7 +296,7 @@ Header START -->
 								<div class="avatar me-3">
 									{% if request.user.avatar %}
 									<img class="avatar-img rounded-circle shadow" src="{{ request.user.avatar.url }}" alt="avatar">
-									{% else%}
+									{% else %}
 									<img class="avatar-img rounded-circle shadow" src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="avatar">
 									{% endif %}
 								</div>
@@ -338,9 +338,9 @@ Header START -->
 							</div>
 						</li>
 					</ul>
-
-				</div>
 				{% endif %}
+				</div>
+				
 				<div class="nav-item dropdown dropdown-toggle-icon-none nav-search">
 					<a class="nav-link dropdown-toggle" role="button" href="#" id="navSearch" data-bs-toggle="dropdown" aria-expanded="false">
 						<i class="bi bi-search fs-4"> </i>
@@ -370,8 +370,8 @@ Header START -->
 		<div class="container">
 			<div class="row align-items-center justify-content-center py-4">
 					<div class="text-md-center text-primary-hover text-body-secondary">©2024
-						<a href="/" class="text-reset btn-link" 
-						target="_blank">Blogzine</a>. All rights reserved
+						<a href="/" class="text-reset btn-link" 	
+						target="_blank">Webzine</a>. All rights reserved
 					</div>
 			</div>
 		</div>
