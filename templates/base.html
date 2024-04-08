@@ -278,14 +278,16 @@ Header START -->
 			<div class="nav flex-nowrap align-items-center">
 				{% if request.user.is_authenticated %}
 				<div class="nav-item ms-2 ms-md-3 dropdown">
-					<a class="avatar avatar-sm p-0" href="#" 
-					id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static"
-					data-bs-toggle="dropdown" aria-expanded="true">
-					{% if request.user.avatar %}
-					<img class="avatar-img rounded-circle shadow" src="{{ request.user.avatar.url }}" alt="avatar">
-					{% else %}
-					<img class="avatar-img rounded-circle shadow" src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=" alt="avatar">
-					{% endif %}
+					<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button"
+						data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
+						aria-expanded="false">
+						{% if request.user.avatar %}
+						<img class="avatar-img rounded-circle" src="{{ request.user.avatar.url }}" alt="avatar">
+						{% else %}
+						<img class="avatar-img rounded-circle"
+							src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
+							alt="avatar">
+						{% endif %}
 					</a>
 
 					<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown" data-bs-popper="static">
