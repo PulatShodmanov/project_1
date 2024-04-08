@@ -180,7 +180,7 @@ AUTH_USER_MODEL = "user.User"
 
 
 LOGIN_REDIRECT_URL = 'blog:home'
-# LOGIN_URL = 'blog:user_logout'
+LOGIN_URL = 'user:sign_in'
 LOGOUT_REDIRECT_URL = 'blog:home'
 
 LOGGING = {
