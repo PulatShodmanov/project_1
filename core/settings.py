@@ -8,9 +8,9 @@ from .cdn.conf import (
     AWS_ACCESS_KEY_ID,
     AWS_SECRET_ACCESS_KEY,
     AWS_S3_SIGNATURE_VERSION,
+    AWS_ENDPOINT,
     AWS_STORAGE_BUCKET_NAME,
     AWS_ENDPOINT_URL,
-    AWS_ENDPOINT,
     AWS_S3_OBJECT_PARAMETERS,
     DEFAULT_FILE_STORAGE,
     STATICFILES_STORAGE,
@@ -163,7 +163,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 MEDIAFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), 
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 STATICFILES_STORAGE = STATICFILES_STORAGE
