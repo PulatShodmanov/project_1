@@ -6,26 +6,25 @@
 <main>
     <div class="border-bottom border-primary border-1 opacity-1"></div>
 
-
     <section class="pt-0">
         <div class="container position-relative" data-sticky-container="">
             <div class="row">
+                <!-- Main Content START -->
                 <div class="col-lg-9 mb-5">
-              <p>
                     <!-- blockquote -->
                     <figure class="my-5">
-                      <blockquote class="blockquote">
-                        <h2>
-                            {{ post.name }}
-                        </h2>
-                      </blockquote>
-                      <figcaption class="">
-                        <a href="#" class="badge text-bg-danger mb-2">
-                            {{ post.category }}
-                        </a>
-                      </figcaption>
+                        <blockquote class="blockquote">
+                            <h2>
+                                {{ post.name }}
+                            </h2>
+                        </blockquote>
+                        <figcaption class="blockquote-footer">
+                            <a href="#" class="badge text-bg-primary mb-2">
+                                {{ post.category }}
+                            </a>
+                        </figcaption>
                     </figure>
-    
+
                     <h4>
                         {{ post.summary }}
                     </h4>
@@ -35,37 +34,37 @@
                     </figure>
                     {% endif %}
 
-                    {% if post.video %}
-                    <figure class="figure mt-4 mb-5">
-                        <video class="rounded" src="{{ post.video.url }}" alt="Image">
-                    </figure>
-                    {% endif %}
-
                     {% if post.audio %}
                     <h6 class="mt-3">Post Podcast</h6>
                     <div class="d-flex align-items-center border rounded mb-4">
                         <div class="w-100">
                             <div class="player-wrapper bg-light rounded">
-                                <audio class="player-audio" crossorigin="">
-                                    <source src="{{ post.audio.url }}" type="audio/mp3">
-                                </audio>
+                                <div tabindex="0"
+                                    class="plyr plyr--full-ui plyr--audio plyr--html5 plyr--paused plyr--stopped">
+                                    <audio class="player-audio" crossorigin="">
+                                        <source src="{{ post.audio.url }}" type="audio/mp3">
+                                    </audio>
+                                </div>
                             </div>
                         </div>
                     </div>
                     {% endif %}
+
                     <p class="mb-5">
                         {{ post.text }}
                     </p>
 
                     <div class="row g-0 mt-2">
                         {% if privous_post %}
-                        <div class="col-sm-6 bg-primary bg-opacity-10 p-4 position-relative border-end border-1 rounded-start">
-                            <span><i class="bi bi-arrow-left me-3 rtl-flip"></i>
+                        <div
+                            class="col-sm-6 bg-primary bg-opacity-10 p-4 position-relative border-end border-1 rounded-start">
+                            <span>
+                                <i class="bi bi-arrow-left me-3 rtl-flip"></i>
                                 Previous post
                             </span>
                             <h5 class="m-0">
                                 <a href="{% url 'blog:post_detail' privous_post.id %}"
-                                 class="stretched-link btn-link text-reset">
+                                    class="stretched-link btn-link text-reset">
                                     {{ privous_post.name }}
                                 </a>
                             </h5>
@@ -78,31 +77,29 @@
                                 <i class="bi bi-arrow-right ms-3 rtl-flip"></i>
                             </span>
                             <h5 class="m-0">
-                                <a href="{% url 'blog:post_detail' next_post.id %}" class="stretched-link btn-link text-reset">
+                                <a href="{% url 'blog:post_detail' next_post.id %}"
+                                    class="stretched-link btn-link text-reset">
                                     {{ next_post.name }}
                                 </a>
                             </h5>
                         </div>
                         {% endif %}
                     </div>
-    
+
+
                     <!-- Divider -->
                     <hr>
-    
+
                     <!-- Author info START -->
                     <div class="d-flex py-4">
+                        {% if post.author.avatar %}
                         <!-- Avatar -->
                         <a href="#">
-                            {% if post.author.avatar %}
                             <div class="avatar avatar-xxl me-4">
                                 <img class="avatar-img rounded-circle" src="{{ post.author.avatar.url }}" alt="avatar">
                             </div>
-                            {% else %}
-                            <div class="avatar avatar-xxl me-4">
-                                <img class="avatar-img rounded-circle" src="https://t3.ftcdn.net/jpg/05/53/79/60/360_F_553796090_XHrE6R9jwmBJUMo9HKl41hyHJ5gqt9oz.jpg" alt="avatar">
-                            </div>
-                            {% endif %}
                         </a>
+                        {% endif %}
                         <!-- Info -->
                         <div>
                             <div class="d-sm-flex align-items-center justify-content-between">
@@ -112,11 +109,14 @@
                                 </div>
                                 <a href="#" class="btn btn-xs btn-primary-soft">View Articles</a>
                             </div>
-                            <p class="my-2">{{ post.author.bio }}</p>
+                            <p class="my-2">
+                                {{ post.author.bio }}
+                            </p>
                             <!-- Social icons -->
                             <ul class="nav">
                                 <li class="nav-item">
-                                    <a class="nav-link ps-0 pe-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
+                                    <a class="nav-link ps-0 pe-2 fs-5" href="#"><i
+                                            class="fab fa-facebook-square"></i></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
@@ -124,102 +124,78 @@
                                 <li class="nav-item">
                                     <a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
                                 </li>
-                            </ul>					
+                            </ul>
                         </div>
                     </div>
                     <!-- Author info END -->
-    
+
                     <!-- Divider -->
                     <hr>
-    
+
                     <!-- Comments START -->
                     <div>
                         <h3>{{ comments_count }} comments</h3>
 
                         {% for comment in comments %}
                         <div class="my-4 d-flex ps-2 ps-md-3">
-                              <img class="avatar avatar-md rounded-circle float-start me-3" src="{{ comment.user.avatar.url }}" alt="avatar">
-                              <div>
+                            {% if comment.user.avatar %}
+                            <img class="avatar avatar-md rounded-circle float-start me-3"
+                                src="{{ comment.user.avatar.url }}" alt="avatar">
+                            {% endif %}
+                            <div>
                                 <div class="mb-2">
-                                    <h5 class="m-0 neon-text" id="rainbow-text">{{ comment.user.full_name }}</h5>
+                                    <h5 class="m-0">{{ comment.user.full_name }}</h5>
                                     <span class="me-3 small">{{ comment.created_at }}</span>
-                                    <a href="#form-reply" style="cursor: pointer" data-comment-id="{{ comment.id }}" onclick="showReplyForm(this)"
-                                     class="text-body fw-normal">Reply</a>
+                                    <a href="#form-reply" style="cursor: pointer;" data-comment-id="{{ comment.id }}"
+                                        onclick="showReplyForm(this)" class="text-body fw-normal">Reply</a>
                                 </div>
                                 <p>
                                     {{ comment.body }}
                                 </p>
-                              </div>
+                            </div>
                         </div>
-
-                        <style>
-                        .neon-text {
-  font-size: 18px; /* Размер шрифта */
-  font-family: Arial, sans-serif; /* Шрифт */
-  color: transparent; /* Прозрачный цвет текста */
-  background-image: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzFmNWQyNTk4NTg1NTQ2M2IxNmVhZDY3NWJmZTIxODAyYWE2ZGM0OSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/YTXec0wkTv9qLfHy5G/giphy.gif'); /* Изображение GIF в качестве фона */
-  background-size: cover; /* Масштабирование фона */
-  -webkit-background-clip: text; /* Обрезка текста по изображению */
-  text-shadow: 0px 0px 15px #f8bc4b;
-  image-rendering: auto;
-  color: transparent;
-  background-clip: text;
-  animation: neon-flicker 1s infinite alternate; /* Анимация мерцания */
-}
-
-@keyframes neon-flicker {
-  from {
-    background-position: 0 0; /* Начальное состояние */
-  }
-  to {
-    background-position: 100% 0; /* Конечное состояние */
-  }
-}
- </style>
-
-                        {% if comment  %}
                         {% for reply in comment.getReplies.all %}
-                        <div class="my-4 d-flex ps-3 ps-md-5"> 
-                                  <img class="avatar avatar-md rounded-circle float-start me-3"
-                                   src="{{ reply.user.avatar.url }}" alt="avatar">
-                                  <div>
-                                    <div class="mb-2">
-                                        <h6 class="m-0 neon-text">{{ reply.user.full_name }}</h6>
-                                        <span class="me-3 small">{{ reply.created_at }}</span>
-                                    </div>
-                                    <p>{{ reply.body }}</p>
-                                  </div> 
+                        <div class="my-4 d-flex ps-3 ps-md-5">
+                            {% if reply.user.avatar %}
+                            <img class="avatar avatar-md rounded-circle float-start me-3"
+                                src="{{ reply.user.avatar.url }}" alt="avatar">
+                            {% endif %}
+                            <div>
+                                <div class="mb-2">
+                                    <h5 class="m-0">{{ reply.user.full_name }}</h5>
+                                    <span class="me-3 small">{{ reply.created_at }} </span>
+                                </div>
+                                <p>{{ reply.body }}</p>
+                            </div>
                         </div>
                         {% endfor %}
-                        {% endif %}
                         {% endfor %}
 
                     </div>
-                    
+
                     {% if request.user.is_authenticated %}
                     <div id="form-reply">
                         <h3>Leave a comment</h3>
                         <form class="row g-3 mt-2" method="post">
                             {% csrf_token %}
-                          <div class="col-12">
-                            <input type="hidden" name="parent" id="parent-comment-id">
-                              {{ comment_form.body }}
-                          </div>
-                          <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Post comment</button>
-                          </div>
+                            <div class="col-12">
+                                <input type="hidden" name="parent" id="parent-comment-id">
+                                {{ comment_form.body }}
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Post comment</button>
+                            </div>
                         </form>
                     </div>
                     {% else %}
-                    <h6>Please login to leave a comment</h6>
+                    <h5>Please login to leave a comment</h5>
                     {% endif %}
                 </div>
 
 
-
                 <div class="col-lg-3">
                     <div data-sticky="" data-margin-top="80" data-sticky-for="991">
-                  <h4>Share this article</h4>
+                        <h4>Share this article</h4>
                         <ul class="nav text-white-force">
                             <li class="nav-item">
                                 <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-facebook" href="#">
@@ -254,8 +230,7 @@
                                 <a class="text-body" href="#">#{{ i.hashtag }}</a>
                             </li>
                             {% endfor %}
-                          </ul>
-
+                        </ul>
                         <!-- Advertisement -->
                         <div class="mt-4">
                             <a href="#" class="d-block card-img-flash">
@@ -269,21 +244,30 @@
         </div>
     </section>
 
-    <div class="sticky-post bg-light border p-4 mb-5 text-sm-end rounded d-none d-xxl-block">
-      <div class="d-flex align-items-center">
 
-        <div class="me-3">
-          <span>Next post<i class="bi bi-arrow-right ms-3 rtl-flip"></i></span>
-          <h6 class="m-0"> <a href="javascript:void(0)" class="stretched-link btn-link text-reset">Bad habits that people in the industry need to quit</a></h6>
+    <div class="sticky-post bg-light border p-4 mb-5 text-sm-end rounded d-none d-xxl-block">
+        <div class="d-flex align-items-center">
+            <!-- Title -->
+            <div class="me-3">
+                <span>Next post
+                    <i class="bi bi-arrow-right ms-3 rtl-flip"></i>
+                </span>
+                <h6 class="m-0">
+                    <a href="javascript:void(0)" class="stretched-link btn-link text-reset">
+                        Bad habits that
+                        people in the industry need to quit
+                    </a>
+                </h6>
+            </div>
+            <!-- image -->
+            <div class="col-4 d-none d-md-block">
+                <img src="assets/images/blog/4by3/05.jpg" alt="Image">
+            </div>
         </div>
-        <!-- image -->
-        <div class="col-4 d-none d-md-block">
-          <img src="assets/images/blog/4by3/05.jpg" alt="Image">
-        </div>
-      </div>
     </div>
-    </main>
-{% if comments %}
+
+</main>
+
 <script>
     function showReplyForm(element) {
         var commentId = element.getAttribute("data-comment-id");
@@ -292,5 +276,4 @@
 </script>
 
 
-{% endif %}
 {% endblock %}
