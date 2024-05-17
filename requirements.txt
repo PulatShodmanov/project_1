@@ -8,3 +8,4 @@ gunicorn
 logging
 django-storages
 boto3
+rest_framework
