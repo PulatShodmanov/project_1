@@ -126,17 +126,17 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-    "default": {
-        "ENGINE": 'django.db.backends.postgresql',
-        "NAME": os.environ["DBNAME"],
-        "USER": os.environ["DBUSER"],
-        "PASSWORD": os.environ["DBPASSWORD"],
-        "HOST": os.environ["DBHOST"],
-        "PORT": os.environ["DBPORT"],
+# DATABASES = {
+#     "default": {
+#         "ENGINE": 'django.db.backends.postgresql',
+#         "NAME": os.environ["DBNAME"],
+#         "USER": os.environ["DBUSER"],
+#         "PASSWORD": os.environ["DBPASSWORD"],
+#         "HOST": os.environ["DBHOST"],
+#         "PORT": os.environ["DBPORT"],
 
-    }
-}
+#     }
+# }
 
 # # else:
 # DATABASES = {
