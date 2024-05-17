@@ -22,7 +22,7 @@ load_dotenv()
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = bool(os.envirion.get('DEBUG'))  
+DEBUG = bool(os.environ.get('DEBUG'))  
 
 ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', '').split(',')]
 
@@ -126,17 +126,17 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": 'django.db.backends.postgresql',
-#         "NAME": os.environ["DBNAME"],
-#         "USER": os.environ["DBUSER"],
-#         "PASSWORD": os.environ["DBPASSWORD"],
-#         "HOST": os.environ["DBHOST"],
-#         "PORT": os.environ["DBPORT"],
+DATABASES = {
+    "default": {
+        "ENGINE": 'django.db.backends.postgresql',
+        "NAME": os.environ["DBNAME"],
+        "USER": os.environ["DBUSER"],
+        "PASSWORD": os.environ["DBPASSWORD"],
+        "HOST": os.environ["DBHOST"],
+        "PORT": os.environ["DBPORT"],
 
-#     }
-# }
+    }
+}
 
 # # else:
 # DATABASES = {
