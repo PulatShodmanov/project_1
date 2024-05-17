@@ -22,9 +22,9 @@ load_dotenv()
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = bool(os.envirion.get('DEBUG'))  
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', '').split(',')]
 
 WEBSITE_URL = os.environ.get('WEBSITE_URL')
 
@@ -53,6 +53,7 @@ INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS  + LOCAL_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,6 +62,23 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+SITE_ID = 1
+
+
+CORS_ORIGIN_WHITELIST = [
+
+]
+
+CSRF_TRUSTED_ORIGINS = [
+
+]
+
+CORS_ALLOWED_ORIGINS = [
+
+]
+
+ROOT_URLCONF = "core.urls"
 
 # CSRF_TRUSTED_ORIGINS = [
 #     f"https://www.{WEBSITE_URL}",
@@ -98,7 +116,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.app'
 
 # if DEBUG is True:
 DATABASES = {
@@ -107,6 +125,19 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+DATABASES = {
+    "default": {
+        "ENGINE": 'django.db.backends.postgresql',
+        "NAME": os.environ["DBNAME"],
+        "USER": os.environ["DBUSER"],
+        "PASSWORD": os.environ["DBPASSWORD"],
+        "HOST": os.environ["DBHOST"],
+        "PORT": os.environ["DBPORT"],
+
+    }
+}
+
 # # else:
 # DATABASES = {
 #     "default": dj_database_url.parse(os.environ.get("DATABASE_URL")),
