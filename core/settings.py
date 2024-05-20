@@ -66,15 +66,15 @@ SITE_ID = 1
 
 
 CORS_ORIGIN_WHITELIST = [
-
+    "project-1-rchk3z9vk-pulatshodmanovs-projects.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-
+    "project-1-rchk3z9vk-pulatshodmanovs-projects.vercel.app",
 ]
 
 CORS_ALLOWED_ORIGINS = [
-
+    "project-1-rchk3z9vk-pulatshodmanovs-projects.vercel.app",
 ]
 
 ROOT_URLCONF = "core.urls"
